@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="webs_container">
+      <div class="webs_header">
+        <h1>Webstorms</h1>
+      </div>
+      <hr>
+      <div class="webs_list">
+        <% @webs.each do | webstorm |%>
+          <div class="webstorm_div">
+            <table class="webstorm">
+              <tr id="idwebs">
+                <th class="th1">Webstorm</th>
+                <th><%= webstorm[:webstorm] %></th>
+              </tr>
+              <tr>
+                <th class="th1">ID</th>
+                <th><%= webstorm[:id] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Descripción</th>
+                <th> <%= webstorm[:descripcion] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Estado</th>
+                <th> <%= webstorm[:estado] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Fecha inicio</th>
+                <th><%= webstorm[:fecha_inicio] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Fecha termino</th>
+                <th><%= webstorm[:fecha_fin] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Sponsor</th>
+                <th> <%= webstorm[:sponsor] %></th>
+              </tr>
+
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </body>
+</html>
+
+
+<%-# link_to "Webstorm", :controller => 'webstorm', :action => "show", :id=>"#{webstorm[:id]}" -%>

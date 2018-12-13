@@ -3,5 +3,9 @@ Rails.application.routes.draw do
 
 	get '/web', to: 'webstorm#index'
 
-	get '/webstorms', to: 'api/api#get_webstorms'
+	# get '/web/:id', to: 'webstorm#show'
+
+	get '/webs', to: 'webstorm#get_webstorms'
+
+	# get '/webstorms', to: 'api/api#get_webstorms'
 end

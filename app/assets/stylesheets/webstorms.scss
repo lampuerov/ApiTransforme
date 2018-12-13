@@ -1,0 +1,37 @@
+body {
+  background-color: #ACD5EF;
+}
+
+.webs_container .webs_list .webstorm{
+  margin: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+#idwebs{
+  border-top: 1px solid black;
+  font-size: 30px;
+}
+
+tr:nth-child(even) {background-color: #55aadb;}
+
+.th1 {
+  width: 130px;
+}
+
+.webs_header {
+  text-align: center;
+  font-size: 35px;
+}
