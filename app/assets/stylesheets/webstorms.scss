@@ -1,5 +1,5 @@
 body {
-  background-color: #ACD5EF;
+  background-color: #FFFFFF;
 }
 
 .webs_container .webs_list .webstorm{
@@ -9,18 +9,17 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 90%;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  width: 70%;
+  border: 1px solid black;
 }
 
 th, td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
 }
 
-#idwebs{
+.idwebs{
   border-top: 1px solid black;
   font-size: 30px;
 }

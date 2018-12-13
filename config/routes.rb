@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 	get '/', to: 'api/api#token'
 
+	get '/webstorm/:id', to: 'webstorm#get_webstorm'
+
+	put '/webstorm/:id' => 'webstorm#get_webstorm', :as => 'webstorm_show'
+
+
 	get '/web', to: 'webstorm#index'
+
 
 	# get '/web/:id', to: 'webstorm#show'
 
-	get '/webs', to: 'webstorm#get_webstorms'
+	get '/webstorms', to: 'webstorm#get_webstorms'
 
 	# get '/webstorms', to: 'api/api#get_webstorms'
 end
