@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>User</title>
+  </head>
+  <body>
+    <div class="user_container">
+      <div class="user_header">
+        <h1>Grupos de <%= @user["screen_name"]%></h1>
+      </div>
+      <hr>
+      <div class="users_groups">
+        <% @groups.each do | i |%>
+          <div class="group_div">
+            <table class="group">
+              <tr class="gname">
+                <th class="th1">Nombre</th>
+                <th><%= i["group_name"] %></th>
+              </tr>
+              <tr>
+                <th class="th1">ID</th>
+                <th><%= i["id"] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Fecha de creación</th>
+                <th> <%= i["date_created"] %></th>
+              </tr>
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </body>
+</html>

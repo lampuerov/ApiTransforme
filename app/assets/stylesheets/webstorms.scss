@@ -12,6 +12,7 @@ table {
 	margin: 0 auto;
 	width: 1100px;
   border: 3px solid #55aadb;
+  border-collapse: collapse;
 }
 
 th, td {
@@ -22,8 +23,7 @@ th, td {
 }
 
 .idwebs{
-  border-top: 1px solid black;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .idwebs:hover {
@@ -50,6 +50,66 @@ a {
 }
 
 .webstorm_div {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ideas_container .ideas_list{
+  margin: 20px;
+}
+
+.iname{
+  font-size: 25px;
+}
+
+.iname:hover {
+  background-color: #7dbeed;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #55aadb;
+}
+
+
+.ideas_header {
+  text-align: center;
+  font-size: 35px;
+}
+
+.idea_div {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+aside
+
+
+.user_container .users_groups{
+  margin: 20px;
+}
+
+.gname{
+  font-size: 25px;
+}
+
+.gname:hover {
+  background-color: #7dbeed;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #55aadb;
+}
+
+
+.user_header {
+  text-align: center;
+  font-size: 35px;
+}
+
+.group_div {
   text-align: center;
   margin-bottom: 30px;
 }

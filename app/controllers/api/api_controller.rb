@@ -12,8 +12,8 @@ class Api::ApiController < ActionController::API
                                   :body =>
                                       {
                                       :grant_type => "password",
-                                      :client_id => "f061d4b1e62811e8aa5a0a720a822d3c",
-                                      :client_secret => "619ebf2a27b180b6f7488235eaf4fc83",
+                                      :client_id => "c266a2d1ff0711e8aa5a0a720a822d3c ",
+                                      :client_secret => "a4c7e72c6757d3f502e170dee365cba0",
                                       :username => "gjara@transforme.cl",
                                       :password => "Workhard2017"
                                     }.to_json

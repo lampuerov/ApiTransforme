@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
 	put '/webstorm/:id' => 'webstorm#get_webstorm', :as => 'webstorm_show'
 
+	get '/user/:id', to: 'webstorm#get_user'
+
+	put '/user/:id' => 'webstorm#get_user', :as => 'user_show'
 
 	get '/web', to: 'webstorm#index'
 

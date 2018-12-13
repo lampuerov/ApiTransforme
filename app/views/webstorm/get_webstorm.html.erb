@@ -2,9 +2,60 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Webstorm</title>
+    <title>Ideas</title>
   </head>
   <body>
-    <%= @webstorm %>
+    <div class="ideas_container">
+      <div class="ideas_header">
+        <h1>Ideas de <%= @webstorm[:webstorm][:webstorm]%></h1>
+      </div>
+      <hr>
+      <div class="ideas_list">
+        <% @ideas.each do | i |%>
+          <div class="idea_div">
+            <%= link_to "Persona", user_show_path(:id => i[:autor_id], :token => params["token"]) %>
+            <table class="idea">
+              <tr class="iname">
+                <th class="th1">Título</th>
+                <th><%= i[:titulo] %></th>
+              </tr>
+              <tr>
+                <th class="th1">ID</th>
+                <th><%= i[:id] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Descripción</th>
+                <th> <%= i[:descripcion] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Puntaje</th>
+                <th> <%= i[:puntaje] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Puntaje actual</th>
+                <th><%= i[:puntaje_actual] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Votos</th>
+                <th><%= i[:cantidad_votos] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Autor</th>
+                <th> <%= i[:autor] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Email</th>
+                <th> <%= i[:autor_email] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Categoría</th>
+                <th> <%= i[:categoria] %></th>
+              </tr>
+
+            </table>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>
