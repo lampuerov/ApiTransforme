@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $(".idwebs").click(function() {
-    alert($(this).parent().parent().find("a").attr("href"))
-    window.location = $(this).parent().parent().find("a").attr("href");
+    // alert($(this).parent().parent().parent().is("div"))
+    window.location = $(this).parent().parent().parent().find("a").attr("href");
     return false;
   });
 });

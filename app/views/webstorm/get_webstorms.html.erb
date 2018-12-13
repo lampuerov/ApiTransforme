@@ -13,7 +13,6 @@
       <hr>
       <div class="webs_list">
         <% @webs.each do | webstorm |%>
-        <!-- <a href="/webstorm/"></a> -->
           <div class="webstorm_div">
             <%= link_to "webstorm", webstorm_show_path(:id => webstorm[:id], :token => params["token"]) %>
             <table class="webstorm">

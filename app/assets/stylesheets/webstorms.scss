@@ -2,20 +2,22 @@ body {
   background-color: #FFFFFF;
 }
 
-.webs_container .webs_list .webstorm{
+.webs_container .webs_list{
   margin: 20px;
 }
 
 table {
   font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 70%;
-  border: 1px solid black;
+  display: block;
+	margin: 0 auto;
+	width: 1100px;
+  border: 3px solid #55aadb;
 }
 
 th, td {
   padding: 10px;
   text-align: left;
+  width: 100%;
   // border-bottom: 1px solid black;
 }
 
@@ -24,7 +26,14 @@ th, td {
   font-size: 30px;
 }
 
-tr:nth-child(even) {background-color: #55aadb;}
+.idwebs:hover {
+  background-color: #7dbeed;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #55aadb;
+}
 
 .th1 {
   width: 130px;
@@ -33,4 +42,14 @@ tr:nth-child(even) {background-color: #55aadb;}
 .webs_header {
   text-align: center;
   font-size: 35px;
+}
+a {
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+}
+
+.webstorm_div {
+  text-align: center;
+  margin-bottom: 30px;
 }
