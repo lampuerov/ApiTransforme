@@ -11,23 +11,26 @@
       </div>
       <hr>
       <div class="users_groups">
-        <% @groups.each do | i |%>
-          <div class="group_div">
-            <table class="group">
-              <tr class="gname">
-                <th class="th1">Nombre</th>
-                <th><%= i["group_name"] %></th>
-              </tr>
-              <tr>
-                <th class="th1">ID</th>
-                <th><%= i["id"] %></th>
-              </tr>
-              <tr>
-                <th class="th1">Fecha de creación</th>
-                <th> <%= i["date_created"] %></th>
-              </tr>
-            </table>
-          </div>
+        <% if @groups %>
+          <% @groups.each do | i |%>
+            <div class="group_div">
+              <table class="group">
+                <tr>
+                  <%-# class="gname" %>
+                  <th class="th1">Nombre</th>
+                  <th><%= i["group_name"] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">ID</th>
+                  <th><%= i["id"] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">Fecha de creación</th>
+                  <th> <%= i["date_created"] %></th>
+                </tr>
+              </table>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

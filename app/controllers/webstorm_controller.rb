@@ -2,13 +2,13 @@ require "json"
 
 class WebstormController < ApplicationController
 
-  $empresa = "transforme"
 
   def index
 
   end
 
   def get_webstorms
+    $empresa = params[:empresa]
     $a_token = params[:token]
     url = "https://#{$empresa}.brightidea.com/api3/campaign/"
     #puts JSON.pretty_generate(response.parsed_response)
@@ -21,41 +21,49 @@ class WebstormController < ApplicationController
         }
         )
     info_util_webstorms = []
-    paginas = response.parsed_response["stats"]["page_count"]
-    total = response.parsed_response["stats"]["total"]
-    size = (total/paginas).round + 1
-    (1..paginas).each do |pg|
-      response = HTTParty.get(url + "?page=" + pg.to_s + "&page_size=" + size.to_s,
-          {
-              headers:
-                  {
-                  "Authorization" => "Bearer " + $a_token
-                  }
-          }
-          )
-      webstorms = response.parsed_response["campaign_list"]
-      webstorms.each do |webstorm|
-        info_util = {"id": webstorm["id"],
-                     "webstorm": webstorm["name"],
-                     "descripcion": webstorm["description"],
-                     "fecha_creacion": webstorm["date_created"],
-                     "fecha_inicio": webstorm["start_date"],
-                     "fecha_fin": webstorm["end_date"],
-                     "estado": webstorm["status"],
-                     "calendario": webstorm["scheduled"],
-                     "sponsor": webstorm["sponsor"]["screen_name"]
-                   }
+    if response.parsed_response["stats"]
+      paginas = response.parsed_response["stats"]["page_count"]
+      total = response.parsed_response["stats"]["total"]
+      size = (total/paginas).round + 1
+      (1..paginas).each do |pg|
+        response = HTTParty.get(url + "?page=" + pg.to_s + "&page_size=" + size.to_s,
+            {
+                headers:
+                    {
+                    "Authorization" => "Bearer " + $a_token
+                    }
+            }
+            )
+        webstorms = response.parsed_response["campaign_list"]
+        webstorms.each do |webstorm|
+          sponsor = ""
+          if webstorm["sponsor"]
+            sponsor = webstorm["sponsor"]["screen_name"]
+          end
+          info_util = {"id": webstorm["id"],
+                       "webstorm": webstorm["name"],
+                       "descripcion": webstorm["description"],
+                       "fecha_creacion": webstorm["date_created"],
+                       "fecha_inicio": webstorm["start_date"],
+                       "fecha_fin": webstorm["end_date"],
+                       "estado": webstorm["status"],
+                       "calendario": webstorm["scheduled"],
+                       "sponsor": sponsor
+                     }
 
-        info_util_webstorms.push(info_util)
-        # info_util_webstorms[webstorm["id"]] = info_util
+          info_util_webstorms.push(info_util)
+          # info_util_webstorms[webstorm["id"]] = info_util
+        end
       end
     end
+
     @webs = info_util_webstorms
     # render "webstorm/index"
     # render json: JSON.pretty_generate(info_util_webstorms), status: 200
   end
 
   def get_webstorm
+    $empresa = params[:empresa]
     id_web = params["id"]
     url = "https://#{$empresa}.brightidea.com/api3/campaign/"+ id_web +"?with=idea_count"
     response = HTTParty.get(url,
@@ -67,6 +75,10 @@ class WebstormController < ApplicationController
         }
         )
     webstorm = response.parsed_response["campaign"]
+    sponsor = ""
+    if webstorm["sponsor"]
+      sponsor = webstorm["sponsor"]["screen_name"]
+    end
     info_util_webstorm = {"id": webstorm["id"],
                  "webstorm": webstorm["name"],
                  "descripcion": webstorm["description"],
@@ -75,7 +87,7 @@ class WebstormController < ApplicationController
                  "fecha_fin": webstorm["end_date"],
                  "estado": webstorm["status"],
                  "calendario": webstorm["scheduled"],
-                 "sponsor": webstorm["sponsor"]["screen_name"],
+                 "sponsor": sponsor,
                  "cantidad_ideas": webstorm["idea_count"],
                  "cantidad_comentarios": webstorm["comment_count"],
                  "cantidad_votos": webstorm["vote_count"],
@@ -141,6 +153,7 @@ class WebstormController < ApplicationController
   end
 
   def get_user
+    $empresa = params[:empresa]
     id_lider = params["id"]
     url = "https://#{$empresa}.brightidea.com/api3/member/" + id_lider + "?with=groups"
     response = HTTParty.get(url,
@@ -214,9 +227,92 @@ class WebstormController < ApplicationController
     # end
   end
 
+  def get_empresa
+    $a_token = params[:token]
+    $empresa = params[:empresa]
+    url = "https://#{$empresa}.brightidea.com/api3/idea"
+    response = HTTParty.get(url,
+      {
+           headers:
+               {
+               "Authorization" => "Bearer " + $a_token
+               }
+      }
+      )
+    total_ideas = nil
+    if response.parsed_response["stats"]
+      total_ideas = response.parsed_response["stats"]["total"]
+    end
+    url2 = "https://#{$empresa}.brightidea.com/api3/member"
+    response = HTTParty.get(url2,
+      {
+          headers:
+              {
+              "Authorization" => "Bearer " + $a_token
+              }
+      }
+      )
+    total_miembros = nil
+    if response.parsed_response["stats"]
+      total_miembros = response.parsed_response["stats"]["total"]
+    end
+    url3 = "https://#{$empresa}.brightidea.com/api3/campaign"
+    response = HTTParty.get(url3,
+      {
+         headers:
+             {
+             "Authorization" => "Bearer " + $a_token
+             }
+      }
+      )
+    total_webstorms = nil
+    if response.parsed_response["stats"]
+      total_webstorms = response.parsed_response["stats"]["total"]
+    end
+    url4 = "https://#{$empresa}.brightidea.com/api3/group"
+    response = HTTParty.get(url4,
+      {
+         headers:
+             {
+             "Authorization" => "Bearer " + $a_token
+             }
+           }
+         )
+    total_grupos = nil
+    if response.parsed_response["stats"]
+      total_grupos = response.parsed_response["stats"]["total"]
+    end
+    url5 = "https://#{$empresa}.brightidea.com/api3/group?with=member_count"
+    response = HTTParty.get(url5,
+      {
+         headers:
+             {
+             "Authorization" => "Bearer " + $a_token
+             }
+           }
+         )
+    info = response.parsed_response
+    miembros_totales = 0
+    lista_grupos = info["group_list"]
+    if lista_grupos
+      lista_grupos.each do |e|
+        miembros_totales += e["member_count"]
+      end
+    end
+    num_prom_miemb_por_grupo = 0
+    if total_grupos
+      num_prom_miemb_por_grupo = miembros_totales.to_i/total_grupos.to_i
+    end
+    @info_empresa = {"total_ideas": total_ideas,
+                     "total_miembros": total_miembros,
+                     "total_webstorms": total_webstorms,
+                     "total_grupos": total_grupos,
+                     "miembros_x_grupo_avg": num_prom_miemb_por_grupo.round.to_s}
+  end
+
 
   private
     def webstorm_params
-      params.permit(:token, :id)
+      params.permit(:token, :id, :empresa)
     end
 end

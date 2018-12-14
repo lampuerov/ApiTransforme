@@ -4,8 +4,54 @@
     <meta charset="utf-8">
     <title>Webstorm</title>
   </head>
-  <body>
-asfdsafasf
-<%= @webstorms %>
+  <body class="body-index">
+    <div class="e-header">
+      <div class="ee">
+        <h1>Empresas</h1>
+      </div>
+      <h3>Elige una para filtrar la información de la API</h3>
+    </div>
+    <div class="empresas">
+      <div class="entel">
+        <a href="/token?empresa=entel"></a>
+        <img src="<%= image_url('entel.jpg') %>">
+        <h4>Entel</h4>
+      </div>
+      <div class="transforme">
+        <a href="/token?empresa=transforme"></a>
+        <img src="<%= image_url('transforme.png') %>">
+        <h4>Transforme</h4>
+      </div>
+      <div class="bicevida">
+        <a href="/token?empresa=bicevida"></a>
+        <img src="<%= image_url('bicevida.jpg') %>">
+        <h4>Bicevida</h4>
+      </div>
+      <div class="bdp">
+        <a href="/token?empresa=bdp"></a>
+        <img src="<%= image_url('bdp.jpg') %>">
+        <h4>Banco del Pacífico</h4>
+      </div>
+      <div class="coordinador">
+        <a href="/token?empresa=coordinador"></a>
+        <img src="<%= image_url('coordinador.png') %>">
+        <h4>Coordinador Eléctrico Nacional</h4>
+      </div>
+      <div class="abastible">
+        <a href="/token?empresa=abastible"></a>
+        <img src="<%= image_url('abastible.png') %>">
+        <h4>Abastible</h4>
+      </div>
+      <div class="esb">
+        <a href="/token?empresa=esb"></a>
+        <img src="<%= image_url('esb.jpg') %>">
+        <h4>Empresas SB</h4>
+      </div>
+      <div class="cencosud">
+        <a href="/token?empresa=cencosud"></a>
+        <img src="<%= image_url('cencosud.jpg') %>">
+        <h4>Cencosud</h4>
+      </div>
+    </div>
   </body>
 </html>

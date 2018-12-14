@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%=$empresa%></title>
+  </head>
+  <body class="body-index">
+    <div class="empresa">  
+      <div class="empresa-header">
+        <h1>Datos de <%=$empresa%></h1>
+      </div>
+      <div class="empresa-datos">
+        <div class="total_ideas">
+          <h2>Ideas totales</h2>
+          <h2><%=@info_empresa[:total_ideas]%></h2>
+        </div>
+        <div class="total_grupos">
+          <h2>Grupos totales</h2>
+          <h2><%=@info_empresa[:total_grupos]%></h2>
+        </div>
+        <div class="total_webstorms">
+          <h2>Webstorms totales</h2>
+          <h2><%=@info_empresa[:total_webstorms]%></h2>
+        </div>
+        <div class="total_miembros">
+          <h2>Cantidad de miembros totales</h2>
+          <h2><%=@info_empresa[:total_miembros]%></h2>
+        </div>
+        <div class="miembros_x_grupo_avg">
+          <h2>Promedio de miembros por grupo</h2>
+          <h2><%=@info_empresa[:miembros_x_grupo_avg]%></h2>
+        </div>
+      </div>
+      <div class="empresa-webstorms">
+        <a href="/webstorms?empresa=<%=params["empresa"]%>&token=<%=params["token"]%>"></a>
+        <h3>Ver Webstorms</h3>
+      </div>
+    </div>
+  </body>
+</html>

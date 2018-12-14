@@ -2,51 +2,57 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Webstorms Transforme</title>
+    <title>Webstorms</title>
   </head>
   <body>
 
     <div class="webs_container">
       <div class="webs_header">
-        <h1>Webstorms</h1>
+        <h1>Webstorms de <%=$empresa%></h1>
       </div>
       <hr>
       <div class="webs_list">
-        <% @webs.each do | webstorm |%>
-          <div class="webstorm_div">
-            <%= link_to "webstorm", webstorm_show_path(:id => webstorm[:id], :token => params["token"]) %>
-            <table class="webstorm">
-              <tr class="idwebs">
-                <th class="th1">Webstorm</th>
-                <th><%= webstorm[:webstorm] %></th>
-              </tr>
-              <tr>
-                <th class="th1">ID</th>
-                <th><%= webstorm[:id] %></th>
-              </tr>
-              <tr>
-                <th class="th1">Descripción</th>
-                <th> <%= webstorm[:descripcion] %></th>
-              </tr>
-              <tr>
-                <th class="th1">Estado</th>
-                <th> <%= webstorm[:estado] %></th>
-              </tr>
-              <tr>
-                <th class="th1">Fecha inicio</th>
-                <th><%= webstorm[:fecha_inicio] %></th>
-              </tr>
-              <tr>
-                <th class="th1">Fecha termino</th>
-                <th><%= webstorm[:fecha_fin] %></th>
-              </tr>
-              <tr>
-                <th class="th1">Sponsor</th>
-                <th> <%= webstorm[:sponsor] %></th>
-              </tr>
-
-            </table>
-          </div>
+        <% @contador = 0 %>
+        <% if @webs %>
+          <% @webs.each do | webstorm |%>
+            <div class="webstorm-titulo" id="<%=@contador%>">
+              <h5><%= webstorm[:webstorm] %></h5>
+            </div>
+            <div id="webstorm_div_<%=@contador%>" class="webstorm_div">
+              <%= link_to "webstorm", webstorm_show_path(:id => webstorm[:id], :token => params["token"], :empresa => params["empresa"]) %>
+              <table class="webstorm">
+                <tr class="idwebs">
+                  <th class="th1">Webstorm</th>
+                  <th><%= webstorm[:webstorm] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">ID</th>
+                  <th><%= webstorm[:id] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">Descripción</th>
+                  <th> <%= webstorm[:descripcion] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">Estado</th>
+                  <th> <%= webstorm[:estado] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">Fecha inicio</th>
+                  <th><%= webstorm[:fecha_inicio] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">Fecha termino</th>
+                  <th><%= webstorm[:fecha_fin] %></th>
+                </tr>
+                <tr>
+                  <th class="th1">Sponsor</th>
+                  <th> <%= webstorm[:sponsor] %></th>
+                </tr>
+              </table>
+            </div>
+            <% @contador = @contador + 1 %>
+          <% end %>
         <% end %>
       </div>
     </div>

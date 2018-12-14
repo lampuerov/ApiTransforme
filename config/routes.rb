@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-	get '/', to: 'api/api#token'
+	get '/token', to: 'api/api#token'
 
 	get '/webstorm/:id', to: 'webstorm#get_webstorm'
 
@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
 	put '/user/:id' => 'webstorm#get_user', :as => 'user_show'
 
-	get '/web', to: 'webstorm#index'
+	get '/', to: 'webstorm#index'
 
 
 	# get '/web/:id', to: 'webstorm#show'
 
 	get '/webstorms', to: 'webstorm#get_webstorms'
+
+	get '/empresa', to: 'webstorm#get_empresa'
 
 	# get '/webstorms', to: 'api/api#get_webstorms'
 end

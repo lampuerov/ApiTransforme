@@ -11,11 +11,23 @@
       </div>
       <hr>
       <div class="ideas_list">
+        <% @contador = 0 %>
         <% @ideas.each do | i |%>
-          <div class="idea_div">
-            <%= link_to "Persona", user_show_path(:id => i[:autor_id], :token => params["token"]) %>
+          <div class="idea-titulo" id="<%=@contador%>">
+            <h5><%= i[:titulo] %></h5>
+          </div>
+          <div class="idea_div" id="idea_div_<%=@contador%>">
+            <%= link_to "Persona", user_show_path(:id => i[:autor_id], :token => params["token"], :empresa => params["empresa"]) %>
             <table class="idea">
               <tr class="iname">
+                <th class="th1">Autor</th>
+                <th> <%= i[:autor] %></th>
+              </tr>
+              <tr>
+                <th class="th1">Email</th>
+                <th> <%= i[:autor_email] %></th>
+              </tr>
+              <tr>
                 <th class="th1">Título</th>
                 <th><%= i[:titulo] %></th>
               </tr>
@@ -40,20 +52,13 @@
                 <th><%= i[:cantidad_votos] %></th>
               </tr>
               <tr>
-                <th class="th1">Autor</th>
-                <th> <%= i[:autor] %></th>
-              </tr>
-              <tr>
-                <th class="th1">Email</th>
-                <th> <%= i[:autor_email] %></th>
-              </tr>
-              <tr>
                 <th class="th1">Categoría</th>
                 <th> <%= i[:categoria] %></th>
               </tr>
 
             </table>
           </div>
+          <% @contador = @contador + 1 %>
         <% end %>
       </div>
     </div>
