@@ -7,6 +7,10 @@ class WebstormController < ApplicationController
 
   end
 
+  def empresas
+
+  end
+
   def get_webstorms
     $empresa = params[:empresa]
     $a_token = params[:token]
@@ -65,7 +69,7 @@ class WebstormController < ApplicationController
   def get_webstorm
     $empresa = params[:empresa]
     id_web = params["id"]
-    url = "https://#{$empresa}.brightidea.com/api3/campaign/"+ id_web +"?with=idea_count"
+    url = "https://#{$empresa}.brightidea.com/api3/campaign/"+ id_web +"?with=member_count"
     response = HTTParty.get(url,
         {
             headers:
@@ -75,6 +79,7 @@ class WebstormController < ApplicationController
         }
         )
     webstorm = response.parsed_response["campaign"]
+    member_count = webstorm["member_count"]
     sponsor = ""
     if webstorm["sponsor"]
       sponsor = webstorm["sponsor"]["screen_name"]
@@ -95,7 +100,7 @@ class WebstormController < ApplicationController
                  "cantidad_blogs": webstorm["blog_count"]
                }
     # Obteniendo ideas del webstorm
-    url = "https://#{$empresa}.brightidea.com/api3/idea?campaign_id=" + id_web
+    url = "https://#{$empresa}.brightidea.com/api3/idea?campaign_id=" + id_web +"&with=idea_count"
     response = HTTParty.get(url,
          {
              headers:
@@ -120,7 +125,6 @@ class WebstormController < ApplicationController
            )
         ideas = response.parsed_response["idea_list"]
         ideas.each do |idea|
-          p idea
           votos = []
           if idea["votes"]
             idea["votes"].each do |vote|
@@ -149,13 +153,14 @@ class WebstormController < ApplicationController
                           "ideas": info_util_ideas}
     @webstorm = info_todo_webstorm
     @ideas = @webstorm[:ideas]
+    @member_count = member_count
     # render json: info_todo_webstorm, status: 200
   end
 
   def get_user
     $empresa = params[:empresa]
     id_lider = params["id"]
-    url = "https://#{$empresa}.brightidea.com/api3/member/" + id_lider + "?with=groups"
+    url = "https://#{$empresa}.brightidea.com/api3/member/" + id_lider + "?with=groups&group_count"
     response = HTTParty.get(url,
         {
             headers:
@@ -165,9 +170,14 @@ class WebstormController < ApplicationController
         }
         )
     grupos = response.parsed_response["member"]["groups"]
-    p response.parsed_response
-
+    count = 0
+    if grupos
+      grupos.each do |miembro|
+        count = count + 1
+      end
+    end
     @groups = grupos
+    @nro_grupos = count
     @user = response.parsed_response["member"]
     # if grupos.length() == 1
     #   url = "https://#{$empresa}.brightidea.com/api3/group/"+ grupos[0]["id"] +"?with=members&with=member_count"
@@ -230,84 +240,88 @@ class WebstormController < ApplicationController
   def get_empresa
     $a_token = params[:token]
     $empresa = params[:empresa]
-    url = "https://#{$empresa}.brightidea.com/api3/idea"
-    response = HTTParty.get(url,
-      {
+    if not $a_token
+      redirect_to nopermit_path
+    else
+      url = "https://#{$empresa}.brightidea.com/api3/idea"
+      response = HTTParty.get(url,
+        {
+             headers:
+                 {
+                 "Authorization" => "Bearer " + $a_token
+                 }
+        }
+        )
+      total_ideas = nil
+      if response.parsed_response["stats"]
+        total_ideas = response.parsed_response["stats"]["total"]
+      end
+      url2 = "https://#{$empresa}.brightidea.com/api3/member"
+      response = HTTParty.get(url2,
+        {
+            headers:
+                {
+                "Authorization" => "Bearer " + $a_token
+                }
+        }
+        )
+      total_miembros = nil
+      if response.parsed_response["stats"]
+        total_miembros = response.parsed_response["stats"]["total"]
+      end
+      url3 = "https://#{$empresa}.brightidea.com/api3/campaign"
+      response = HTTParty.get(url3,
+        {
            headers:
                {
                "Authorization" => "Bearer " + $a_token
                }
-      }
-      )
-    total_ideas = nil
-    if response.parsed_response["stats"]
-      total_ideas = response.parsed_response["stats"]["total"]
-    end
-    url2 = "https://#{$empresa}.brightidea.com/api3/member"
-    response = HTTParty.get(url2,
-      {
-          headers:
-              {
-              "Authorization" => "Bearer " + $a_token
-              }
-      }
-      )
-    total_miembros = nil
-    if response.parsed_response["stats"]
-      total_miembros = response.parsed_response["stats"]["total"]
-    end
-    url3 = "https://#{$empresa}.brightidea.com/api3/campaign"
-    response = HTTParty.get(url3,
-      {
-         headers:
-             {
-             "Authorization" => "Bearer " + $a_token
-             }
-      }
-      )
-    total_webstorms = nil
-    if response.parsed_response["stats"]
-      total_webstorms = response.parsed_response["stats"]["total"]
-    end
-    url4 = "https://#{$empresa}.brightidea.com/api3/group"
-    response = HTTParty.get(url4,
-      {
-         headers:
-             {
-             "Authorization" => "Bearer " + $a_token
-             }
-           }
-         )
-    total_grupos = nil
-    if response.parsed_response["stats"]
-      total_grupos = response.parsed_response["stats"]["total"]
-    end
-    url5 = "https://#{$empresa}.brightidea.com/api3/group?with=member_count"
-    response = HTTParty.get(url5,
-      {
-         headers:
-             {
-             "Authorization" => "Bearer " + $a_token
-             }
-           }
-         )
-    info = response.parsed_response
-    miembros_totales = 0
-    lista_grupos = info["group_list"]
-    if lista_grupos
-      lista_grupos.each do |e|
-        miembros_totales += e["member_count"]
+        }
+        )
+      total_webstorms = nil
+      if response.parsed_response["stats"]
+        total_webstorms = response.parsed_response["stats"]["total"]
       end
+      url4 = "https://#{$empresa}.brightidea.com/api3/group"
+      response = HTTParty.get(url4,
+        {
+           headers:
+               {
+               "Authorization" => "Bearer " + $a_token
+               }
+             }
+           )
+      total_grupos = nil
+      if response.parsed_response["stats"]
+        total_grupos = response.parsed_response["stats"]["total"]
+      end
+      url5 = "https://#{$empresa}.brightidea.com/api3/group?with=member_count"
+      response = HTTParty.get(url5,
+        {
+           headers:
+               {
+               "Authorization" => "Bearer " + $a_token
+               }
+             }
+           )
+      info = response.parsed_response
+      miembros_totales = 0
+      lista_grupos = info["group_list"]
+      if lista_grupos
+        lista_grupos.each do |e|
+          miembros_totales += e["member_count"]
+        end
+      end
+      num_prom_miemb_por_grupo = 0
+      if total_grupos
+        num_prom_miemb_por_grupo = miembros_totales.to_i/total_grupos.to_i
+      end
+      @info_empresa = {"total_ideas": total_ideas,
+                       "total_miembros": total_miembros,
+                       "total_webstorms": total_webstorms,
+                       "total_grupos": total_grupos,
+                       "miembros_x_grupo_avg": num_prom_miemb_por_grupo.round.to_s}
     end
-    num_prom_miemb_por_grupo = 0
-    if total_grupos
-      num_prom_miemb_por_grupo = miembros_totales.to_i/total_grupos.to_i
-    end
-    @info_empresa = {"total_ideas": total_ideas,
-                     "total_miembros": total_miembros,
-                     "total_webstorms": total_webstorms,
-                     "total_grupos": total_grupos,
-                     "miembros_x_grupo_avg": num_prom_miemb_por_grupo.round.to_s}
   end
 
 

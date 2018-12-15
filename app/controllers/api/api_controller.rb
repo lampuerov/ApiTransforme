@@ -15,6 +15,8 @@ class Api::ApiController < ActionController::API
 
   def token
     $empresa = params["empresa"]
+    $usuario = params["username"]
+    $pass = params["password"]
     url = "https://auth.brightidea.com/_oauth2/token"
     info_auth  = HTTParty.post(url,
                               {
@@ -25,8 +27,8 @@ class Api::ApiController < ActionController::API
                                       :grant_type => "password",
                                       :client_id => $empresas[$empresa.to_sym][:client_id],
                                       :client_secret => $empresas[$empresa.to_sym][:client_secret],
-                                      :username => "gjara@transforme.cl",
-                                      :password => "Workhard2017"
+                                      :username => $usuario,
+                                      :password => $pass
                                     }.to_json
                               })
     $a_token = info_auth.parsed_response["access_token"]

@@ -6,17 +6,25 @@
   </head>
   <body class="body-index">
     <div class="ideas_container">
-      <div class="ideas_header">
-        <h1>Ideas de <%= @webstorm[:webstorm][:webstorm]%></h1>
+      <div class="global_header">
+        <h1>Webstorm <%= @webstorm[:webstorm][:webstorm]%></h1>
+        <h3>Número de ideas: <%= @ideas.size %></h3>
+        <h3>Número de miembros: <%= @member_count %></h3>
+        <hr>
+        <h1>Ideas</h1>
       </div>
-      <hr>
+
       <div class="ideas_list">
         <% @contador = 0 %>
         <% @ideas.each do | i |%>
           <div class="idea-titulo" id="<%=@contador%>">
             <h5><%= i[:titulo] %></h5>
           </div>
-          <div class="idea_div" id="idea_div_<%=@contador%>">
+          <% @contador = @contador + 1 %>
+        <% end %>
+        <% @contador2 = 0 %>
+        <% @ideas.each do | i |%>
+          <div class="idea_div" id="idea_div_<%=@contador2%>">
             <%= link_to "Persona", user_show_path(:id => i[:autor_id], :token => params["token"], :empresa => params["empresa"]) %>
             <table class="idea">
               <tr class="iname">
@@ -58,7 +66,7 @@
 
             </table>
           </div>
-          <% @contador = @contador + 1 %>
+          <% @contador2 = @contador2 + 1 %>
         <% end %>
       </div>
     </div>

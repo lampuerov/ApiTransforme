@@ -11,12 +11,12 @@ Rails.application.routes.draw do
 
 	get '/', to: 'webstorm#index'
 
-
-	# get '/web/:id', to: 'webstorm#show'
-
 	get '/webstorms', to: 'webstorm#get_webstorms'
 
 	get '/empresa', to: 'webstorm#get_empresa'
 
-	# get '/webstorms', to: 'api/api#get_webstorms'
+	get '/empresas', to: 'webstorm#empresas'
+
+	get '/nopermit', to: 'webstorm#nopermit'
+
 end

@@ -7,10 +7,9 @@
   <body class="body-index">
 
     <div class="webs_container">
-      <div class="webs_header">
+      <div class="global_header">
         <h1>Webstorms de <%=$empresa%></h1>
       </div>
-      <hr>
       <div class="webs_list">
         <% @contador = 0 %>
         <% if @webs %>
@@ -18,7 +17,11 @@
             <div class="webstorm-titulo" id="<%=@contador%>">
               <h5><%= webstorm[:webstorm] %></h5>
             </div>
-            <div id="webstorm_div_<%=@contador%>" class="webstorm_div">
+            <% @contador = @contador + 1 %>
+          <% end %>
+          <% @contador2 = 0 %>
+          <% @webs.each do | webstorm |%>
+            <div id="webstorm_div_<%=@contador2%>" class="webstorm_div">
               <%= link_to "webstorm", webstorm_show_path(:id => webstorm[:id], :token => params["token"], :empresa => params["empresa"]) %>
               <table class="webstorm">
                 <tr class="idwebs">
@@ -51,7 +54,7 @@
                 </tr>
               </table>
             </div>
-            <% @contador = @contador + 1 %>
+            <% @contador2 = @contador2 + 1 %>
           <% end %>
         <% end %>
       </div>

@@ -17,3 +17,49 @@
  body {
    background-color: #FFFFFF;
  }
+
+.navbar{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+}
+.navbar img {
+  display: block;
+  max-width:230px;
+  max-height:110px;
+  width: auto;
+  height: auto;
+  opacity: 0.85;
+}
+
+.go_top {
+  text-align: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+}
+
+.go_top img {
+  display: block;
+  max-width:50px;
+  max-height:50px;
+  width: auto;
+  height: auto;
+  opacity: 0.85;
+}
+
+.go_top:hover img{
+  cursor: pointer;
+  opacity: 1;
+}
+
+.go_top p {
+  font-size: 12px;
+  margin: 2px auto;
+}
+
+
+
+html,body {  margin: 0px; padding: 0px; max-width: 1480px;}

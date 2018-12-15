@@ -6,10 +6,10 @@
   </head>
   <body class="body-index">
     <div class="user_container">
-      <div class="user_header">
+      <div class="global_header">
         <h1>Grupos de <%= @user["screen_name"]%></h1>
+        <h3>Total de grupos: <%= @nro_grupos %></h3>
       </div>
-      <hr>
       <div class="users_groups">
         <% if @groups %>
           <% @groups.each do | i |%>
