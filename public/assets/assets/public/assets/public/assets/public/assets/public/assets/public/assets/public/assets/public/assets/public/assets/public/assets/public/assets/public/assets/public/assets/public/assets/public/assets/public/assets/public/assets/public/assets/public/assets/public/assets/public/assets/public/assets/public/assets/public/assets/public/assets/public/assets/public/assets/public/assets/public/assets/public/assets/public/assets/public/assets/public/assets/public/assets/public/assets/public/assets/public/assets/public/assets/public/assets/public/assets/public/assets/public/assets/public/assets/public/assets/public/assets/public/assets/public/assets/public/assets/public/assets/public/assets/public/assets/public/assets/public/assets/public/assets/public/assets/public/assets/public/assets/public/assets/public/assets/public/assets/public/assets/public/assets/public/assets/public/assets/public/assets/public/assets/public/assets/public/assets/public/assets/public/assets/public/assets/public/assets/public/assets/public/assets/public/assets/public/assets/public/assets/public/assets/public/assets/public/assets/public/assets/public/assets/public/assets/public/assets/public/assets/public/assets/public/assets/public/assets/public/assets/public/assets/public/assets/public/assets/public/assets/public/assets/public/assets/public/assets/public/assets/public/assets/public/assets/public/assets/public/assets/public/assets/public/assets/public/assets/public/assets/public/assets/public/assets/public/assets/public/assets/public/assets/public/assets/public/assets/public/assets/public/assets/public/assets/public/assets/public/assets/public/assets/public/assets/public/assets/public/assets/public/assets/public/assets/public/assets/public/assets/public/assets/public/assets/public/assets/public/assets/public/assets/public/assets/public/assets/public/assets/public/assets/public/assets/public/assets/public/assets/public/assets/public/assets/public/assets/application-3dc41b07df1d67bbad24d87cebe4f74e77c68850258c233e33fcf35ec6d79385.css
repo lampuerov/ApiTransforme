@@ -1,0 +1,310 @@
+/* line 1, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+body {
+  background-color: #FFFFFF;
+  font: 600 1.5em/1 'Raleway', sans-serif;
+}
+
+/* line 6, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+table {
+  display: block;
+  margin: 0 auto;
+  width: 1100px;
+  border: 3px solid #55aadb;
+  border-collapse: collapse;
+}
+
+/* line 14, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+th, td {
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+/* line 21, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.idwebs, .iname, .gname {
+  font-size: 25px;
+}
+
+/* line 25, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.idwebs:hover, .iname:hover, .gname:hover, .header_div:hover {
+  background-color: #7dbeed;
+  cursor: pointer;
+}
+
+/* line 30, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+tr:nth-child(even) {
+  background-color: #55aadb;
+}
+
+/* line 34, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.th1 {
+  width: 130px;
+}
+
+/* line 39, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+a {
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+}
+
+/* line 45, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.webstorm_div, .idea_div, .group_div {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* line 50, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.webs_list, .ideas_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+/* line 58, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.webstorm-titulo, .idea-titulo {
+  background-color: #55aadb;
+  color: white;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+/* line 68, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.ideas_header, .user_header, .no_header {
+  text-align: center;
+  font-size: 35px;
+}
+
+/* line 73, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.body-index {
+  background-image: url(https://i.imgur.com/oP79hgQ.jpg);
+  background-size: 1600px auto;
+}
+
+/* line 78, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* line 84, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.e-header, .global_header {
+  text-align: center;
+  margin-bottom: 100px;
+  color: #f2f2f2;
+}
+
+/* line 90, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.user_container .users_groups {
+  margin: 20px;
+}
+
+/* line 94, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+img {
+  height: auto;
+  width: auto;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* line 101, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresas > div {
+  width: 280px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  margin: 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 112, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresas > div:hover {
+  border: 10px solid #55aadb;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* line 118, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+h4 {
+  color: #55aadb;
+}
+
+/* line 122, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresa-datos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  width: 80%;
+}
+
+/* line 130, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresa-datos > div {
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  margin: 20px;
+  text-align: center;
+  border: 10px solid #55aadb;
+  font-size: 15px;
+}
+
+/* line 140, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresa-datos h2 {
+  color: #55aadb !important;
+}
+
+/* line 144, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresa-webstorms {
+  margin: 40px;
+  min-width: 250px;
+  min-height: 100px;
+  background-color: #55aadb;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 155, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresa-webstorms:hover {
+  cursor: pointer;
+  color: #55aadb;
+  background-color: inherit;
+  padding: 0;
+  border: 10px solid #55aadb;
+}
+
+/* line 163, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.empresa {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 171, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+div.empresa-datos h2 {
+  color: #fefffc;
+}
+
+/* line 175, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+a.back_login {
+  line-height: 20px;
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+/* line 182, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.no_header {
+  text-align: center;
+  width: 70%;
+  padding: 20px;
+  background: rgba(85, 170, 219, 0.9);
+  margin: 100px auto;
+}
+
+/* line 190, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.header_div {
+  display: block;
+  background-color: white;
+  border: 3px solid black;
+  width: 30%;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+/* line 199, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.login_div {
+  margin: 70px 30%;
+  height: 400px;
+  text-align: center;
+  background: rgba(85, 170, 219, 0.9);
+  color: #fefffc;
+}
+
+/* line 207, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.form_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 218, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.login {
+  margin-top: 20px;
+  border: 1px solid #55aadb;
+}
+
+/* line 224, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.form_login input {
+  margin-left: 20px;
+}
+
+/* line 228, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.form_login input[type=email], select, .form_login input[type=password] {
+  width: 100%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* line 238, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.form_login input.form_submit {
+  margin-top: 20px;
+}
+
+/* line 242, /home/t_pc/Uc/Transforme/ApiTransforme/app/assets/stylesheets/webstorms.scss */
+.global_header {
+  margin-top: 30px;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  background: rgba(85, 170, 219, 0.9);
+  margin-bottom: 20px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+ body {
+   background-color: #FFFFFF;
+ }
+
+.navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar img {
+  display: block;
+  max-width:230px;
+  max-height:110px;
+  width: auto;
+  height: auto;
+  opacity: 0.85;
+}
+
+html,body { height: 100%; margin: 0px; padding: 0px; }
